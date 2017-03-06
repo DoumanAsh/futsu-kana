@@ -1,0 +1,83 @@
+body
+    & a
+        color: teal
+
+    text-align: center
+
+    & > nav
+        display: flex
+        text-align: center
+        justify-content: center
+        box-shadow: 3px 3px 3px 4px rgba(0, 0, 0, 0.4)
+        background: #333;
+
+        & > a
+            padding: 1rem
+            text-decoration: none
+            cursor: pointer
+            color: white
+            &:hover
+                background: #444
+            &.selected
+                background: teal
+
+
+    & > section
+        padding: 1rem
+
+        &:before
+            content: attr(id)
+            font-size: 1.5em
+            font-weight: 900
+
+        & > h3
+            color: grey
+
+        & > p.desc
+            margin-bottom: .5em
+            word-break: break-word
+
+        & > .table
+            display: flex
+            justify-content: center
+            flex-wrap: wrap
+
+            & > div
+                display: flex
+                flex-direction: column
+                cursor: pointer
+
+                & > *
+                    padding: .5em
+                    border: 1px solid black
+
+                    &:first-child
+                        background: #333
+
+                    &:after
+                        display: block
+                        font-size: .75em
+                        content: attr(title)
+
+
+                &:hover
+                    background: teal
+    & > #Start
+        & > section.query
+            display: flex
+            flex-direction: column
+            align-items: center
+            & > p.question
+                font-size: 5em
+            & > p.answer
+                margin-bottom: 1em
+            & > input
+                width: 200px
+                font-size: 85%
+                padding: .4em
+                border: 1px solid #ccc
+                border-radius: 2px
+
+                &.wrong
+                    background: #ff0000b3
+

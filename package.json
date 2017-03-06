@@ -1,0 +1,61 @@
+{
+    "name": "futsu-kana",
+    "description": "Static site generator.",
+    "author": "Douman",
+    "version": "0.0.1",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+
+    "license": "MIT",
+    "scripts": {
+        "start": "brunch watch --server",
+        "build": "brunch build --production",
+        "lint": "eslint app/ --ignore-pattern public"
+    },
+
+    "dependencies": {
+    },
+
+    "devDependencies": {
+        "eslint": "*",
+
+        "ava": "*",
+        "nyc": "*",
+
+        "brunch": "*",
+        "auto-reload-brunch": "*",
+        "autoprefixer-stylus": "*",
+        "clean-css-brunch": "*",
+        "css-brunch": "*",
+        "eslint-brunch": "*",
+        "jade-brunch": "*",
+        "stylus-brunch": "*",
+        "babel-brunch": "*",
+        "babel-preset-es2015": "*",
+        "rollup-brunch": "*",
+        "uglify-js-brunch": "*"
+    },
+    "ava": {
+        "files": [
+            "test/**/*.js"
+        ],
+        "source": [
+            "app/**/*.js"
+        ],
+        "failFast": true
+    },
+    "nyc": {
+        "all": true,
+        "include": [
+            "app/**/*.js"
+        ],
+        "reporter": [
+            "html",
+            "text",
+            "lcov"
+        ]
+    }
+}
