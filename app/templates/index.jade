@@ -21,11 +21,25 @@ include _head.jade
         ra: [kana('ら', 'ra'), kana('り', 'ri'), kana('る', 'ru'), kana('れ', 're'), kana('ろ', 'ro')],
         wa: [kana('わ', 'wa'), kana(), kana(), kana(), kana('を', 'wo')],
         n: [kana(), kana(), kana(), kana(), kana('ん', 'n')],
+
         ga: [kana('が', 'ga'), kana('ぎ', 'gi'), kana('ぐ', 'gu'), kana('げ', 'ge'), kana('ご', 'go')],
         za: [kana('ざ', 'za'), kana('じ', 'ji'), kana('ず', 'zu'), kana('ぜ', 'ze'), kana('ぞ', 'zo')],
         da: [kana('だ', 'da'), kana('ぢ', 'ji'), kana('づ', 'zu'), kana('で', 'de'), kana('ぞ', 'do')],
         da: [kana('ば', 'ba'), kana('び', 'bi'), kana('ぶ', 'bu'), kana('べ', 'be'), kana('ぼ', 'bo')],
-        pa: [kana('ぱ', 'pa'), kana('ぴ', 'pi'), kana('ぷ', 'pu'), kana('ぺ', 'pe'), kana('ぽ', 'po')]
+        pa: [kana('ぱ', 'pa'), kana('ぴ', 'pi'), kana('ぷ', 'pu'), kana('ぺ', 'pe'), kana('ぽ', 'po')],
+
+        kya: [kana('きゃ', 'kya'), kana('きゅ', 'kyu'), kana('きょ', 'kyo'), kana(), kana()],
+        sha: [kana('しゃ', 'sha'), kana('しゅ', 'shu'), kana('しょ', 'sho'), kana(), kana()],
+        cha: [kana('ちゃ', 'cha'), kana('ちゅ', 'chu'), kana('ちょ', 'cho'), kana(), kana()],
+        nya: [kana('にゃ', 'nya'), kana('にゅ', 'nyu'), kana('にょ', 'nyo'), kana(), kana()],
+        hya: [kana('ひゃ', 'hya'), kana('ひゅ', 'hyu'), kana('ひょ', 'hyo'), kana(), kana()],
+        mya: [kana('みゃ', 'mya'), kana('みゅ', 'myu'), kana('みょ', 'myo'), kana(), kana()],
+        rya: [kana('りゃ', 'rya'), kana('りゅ', 'ryu'), kana('りょ', 'ryo'), kana(), kana()],
+        gya: [kana('ぎゃ', 'gya'), kana('ぎゅ', 'gyu'), kana('ぎょ', 'gyo'), kana(), kana()],
+        zya: [kana('じゃ', 'ja'), kana('じゅ', 'ju'), kana('じょ', 'jo'), kana(), kana()],
+        dya: [kana('ぢゃ', 'ja'), kana('ぢゅ', 'ju'), kana('ぢょ', 'jo'), kana(), kana()],
+        bya: [kana('びゃ', 'bya'), kana('びゅ', 'byu'), kana('びょ', 'byo'), kana(), kana()],
+        pya: [kana('ぴゃ', 'pya'), kana('ぴゅ', 'pyu'), kana('ぴょ', 'pyo'), kana(), kana()],
     };
 
     var katakana = {
@@ -40,11 +54,26 @@ include _head.jade
         ra: [kana('ラ', 'ra'), kana('リ', 'ri'), kana('ル', 'ru'), kana('レ', 're'), kana('ロ', 'ro')],
         wa: [kana('ワ', 'wa'), kana(), kana(), kana(), kana('ヲ', 'wo')],
         n: [kana(), kana(), kana(), kana(), kana('ン', 'n')],
+
         ga: [kana('ガ', 'ga'), kana('ギ', 'gi'), kana('グ', 'gu'), kana('ゲ', 'ge'), kana('ゴ', 'go')],
         za: [kana('ザ', 'za'), kana('ジ', 'ji'), kana('ズ', 'zu'), kana('ゼ', 'ze'), kana('ゾ', 'zo')],
         da: [kana('ダ', 'da'), kana('ヂ', 'ji'), kana('ヅ', 'zu'), kana('デ', 'de'), kana('ド', 'do')],
         da: [kana('バ', 'ba'), kana('ビ', 'bi'), kana('ブ', 'bu'), kana('ベ', 'be'), kana('ボ', 'bo')],
-        pa: [kana('パ', 'pa'), kana('ピ', 'pi'), kana('プ', 'pu'), kana('ペ', 'pe'), kana('ポ', 'po')]
+        pa: [kana('パ', 'pa'), kana('ピ', 'pi'), kana('プ', 'pu'), kana('ペ', 'pe'), kana('ポ', 'po')],
+
+        kya: [kana('キャ', 'kya'), kana('キュ', 'kyu'), kana('キョ', 'kyo'), kana(), kana()],
+        sha: [kana('シャ', 'sha'), kana('シュ', 'shu'), kana('ショ', 'sho'), kana(), kana()],
+        cha: [kana('チャ', 'cha'), kana('チュ', 'chu'), kana('チョ', 'cho'), kana(), kana()],
+        nya: [kana('ニャ', 'nya'), kana('ニュ', 'nyu'), kana('ニョ', 'nyo'), kana(), kana()],
+        hya: [kana('ヒャ', 'hya'), kana('ヒュ', 'hyu'), kana('ヒョ', 'hyo'), kana(), kana()],
+        mya: [kana('ミャ', 'mya'), kana('ミュ', 'myu'), kana('ミョ', 'myo'), kana(), kana()],
+        rya: [kana('リャ', 'rya'), kana('リュ', 'ryu'), kana('リョ', 'ryo'), kana(), kana()],
+        gya: [kana('ギャ', 'gya'), kana('ギュ', 'gyu'), kana('ギョ', 'gyo'), kana(), kana()],
+        zya: [kana('ジャ', 'ja'), kana('ジュ', 'ju'), kana('ジョ', 'jo'), kana(), kana()],
+        dya: [kana('ヂャ', 'ja'), kana('ヂュ', 'ju'), kana('ヂョ', 'jo'), kana(), kana()],
+        bya: [kana('ビャ', 'bya'), kana('ビュ', 'byu'), kana('ビョ', 'byo'), kana(), kana()],
+        pya: [kana('ピャ', 'pya'), kana('ピュ', 'pyu'), kana('ピョ', 'pyo'), kana(), kana()],
+
     };
 
 mixin nav_a(name)
