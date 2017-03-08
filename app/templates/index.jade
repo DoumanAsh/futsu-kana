@@ -26,8 +26,10 @@ include _head.jade
         za: [kana('ざ', 'za'), kana('じ', 'ji'), kana('ず', 'zu'), kana('ぜ', 'ze'), kana('ぞ', 'zo')],
         da: [kana('だ', 'da'), kana('ぢ', 'di'), kana('づ', 'du'), kana('で', 'de'), kana('ど', 'do')],
         ba: [kana('ば', 'ba'), kana('び', 'bi'), kana('ぶ', 'bu'), kana('べ', 'be'), kana('ぼ', 'bo')],
-        pa: [kana('ぱ', 'pa'), kana('ぴ', 'pi'), kana('ぷ', 'pu'), kana('ぺ', 'pe'), kana('ぽ', 'po')],
+        pa: [kana('ぱ', 'pa'), kana('ぴ', 'pi'), kana('ぷ', 'pu'), kana('ぺ', 'pe'), kana('ぽ', 'po')]
+    };
 
+    var hiragana_double = {
         kya: [kana('きゃ', 'kya'), kana('きゅ', 'kyu'), kana('きょ', 'kyo'), kana(), kana()],
         sha: [kana('しゃ', 'sha'), kana('しゅ', 'shu'), kana('しょ', 'sho'), kana(), kana()],
         cha: [kana('ちゃ', 'cha'), kana('ちゅ', 'chu'), kana('ちょ', 'cho'), kana(), kana()],
@@ -59,8 +61,10 @@ include _head.jade
         za: [kana('ザ', 'za'), kana('ジ', 'ji'), kana('ズ', 'zu'), kana('ゼ', 'ze'), kana('ゾ', 'zo')],
         da: [kana('ダ', 'da'), kana('ヂ', 'di'), kana('ヅ', 'du'), kana('デ', 'de'), kana('ド', 'do')],
         ba: [kana('バ', 'ba'), kana('ビ', 'bi'), kana('ブ', 'bu'), kana('ベ', 'be'), kana('ボ', 'bo')],
-        pa: [kana('パ', 'pa'), kana('ピ', 'pi'), kana('プ', 'pu'), kana('ペ', 'pe'), kana('ポ', 'po')],
+        pa: [kana('パ', 'pa'), kana('ピ', 'pi'), kana('プ', 'pu'), kana('ペ', 'pe'), kana('ポ', 'po')]
+    };
 
+    var katakana_double = {
         kya: [kana('キャ', 'kya'), kana('キュ', 'kyu'), kana('キョ', 'kyo'), kana(), kana()],
         sha: [kana('シャ', 'sha'), kana('シュ', 'shu'), kana('ショ', 'sho'), kana(), kana()],
         cha: [kana('チャ', 'cha'), kana('チュ', 'chu'), kana('チョ', 'cho'), kana(), kana()],
@@ -73,7 +77,6 @@ include _head.jade
         dya: [kana('ヂャ', 'dya'), kana('ヂュ', 'dyu'), kana('ヂョ', 'dyo'), kana(), kana()],
         bya: [kana('ビャ', 'bya'), kana('ビュ', 'byu'), kana('ビョ', 'byo'), kana(), kana()],
         pya: [kana('ピャ', 'pya'), kana('ピュ', 'pyu'), kana('ピョ', 'pyo'), kana(), kana()],
-
     };
 
 mixin nav_a(name)
@@ -96,22 +99,44 @@ body
     section(class="sub_page" id="Hiragana")
         p(class="desc").
             Choose #[+link("Hiragana", "https://en.wikipedia.org/wiki/Hiragana")] to learn. Then, you can start.
-        section(class="table")
-            each kanas, col in hiragana
-                div(class="column")
-                    +checkbox(col)
-                    each kana in kanas
-                        div(title=kana.romaji)=kana.kana
+        section(class="select")
+            a()="«"
+            section(class="current")
+                section(class="table")
+                    each kanas, col in hiragana
+                        div(class="column")
+                            +checkbox(col)
+                            each kana in kanas
+                                div(title=kana.romaji)=kana.kana
+
+                section(class="table")
+                    each kanas, col in hiragana_double
+                        div(class="column")
+                            +checkbox(col)
+                            each kana in kanas
+                                div(title=kana.romaji)=kana.kana
+            a()="»"
 
     section(class="sub_page" id="Katakana")
         p(class="desc").
             Choose #[+link("Katakana", "https://en.wikipedia.org/wiki/Katakana")] to learn. Then, you can start.
-        section(class="table")
-            each kanas, col in katakana
-                div(class="column")
-                    +checkbox(col)
-                    each kana in kanas
-                        div(title=kana.romaji)=kana.kana
+        section(class="select")
+            a(class="left")="«"
+            section(class="current")
+                section(class="table")
+                    each kanas, col in katakana
+                        div(class="column")
+                            +checkbox(col)
+                            each kana in kanas
+                                div(title=kana.romaji)=kana.kana
+
+                section(class="table")
+                    each kanas, col in katakana_double
+                        div(class="column")
+                            +checkbox(col)
+                            each kana in kanas
+                                div(title=kana.romaji)=kana.kana
+            a(class="right")="»"
 
     section(class="sub_page" id="Start")
         p(class="desc").

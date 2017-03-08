@@ -41,12 +41,21 @@ export function init_start(question, kana) {
      */
     const init_kanas = () => {
         //Both supposed to have equal length
-        const hiragana_columns = kana.hiragana.children;
-        const katakana_columns = kana.katakana.children;
+        const hiragana_columns = kana.hiragana.tables.simple.children;
+        const katakana_columns = kana.katakana.tables.simple.children;
 
         for (let idx = 0; idx < hiragana_columns.length; idx += 1) {
             add_column_if(hiragana_columns[idx]);
             add_column_if(katakana_columns[idx]);
+        }
+
+        //Both supposed to have equal length
+        const double_hiragana_columns = kana.hiragana.tables.double.children;
+        const double_katakana_columns = kana.katakana.tables.double.children;
+
+        for (let idx = 0; idx < double_hiragana_columns.length; idx += 1) {
+            add_column_if(double_hiragana_columns[idx]);
+            add_column_if(double_katakana_columns[idx]);
         }
 
         question_kanas_back = question_kanas.slice(0);
@@ -200,4 +209,92 @@ export function table_click(event) {
     const column_check = column.children[0].children[0];
 
     column_check.checked = !column_check.checked;
+}
+
+/**
+ * Event handler to shift elements left inside container next to current element.
+ *
+ * If there is no more elements at left, then go from the end.
+ *
+ * @param {Object} event DOM event.
+ *
+ * @returns {void}
+ */
+export function switch_left(event) {
+    const current = event.target.nextElementSibling;
+    const children_len = current.children.length;
+
+    for (let idx = 0; idx < children_len; idx++) {
+        const element = current.children[idx];
+
+        if (element.style.display !== 'none') {
+            const element_display = element.style.display;
+
+            if (element.previousElementSibling) {
+                element.style.display = 'none';
+                element.previousElementSibling.style.display = element_display;
+            }
+            else {
+                element.style.display = 'none';
+                current.children[children_len-1].style.display = element_display;
+            }
+
+            return;
+        }
+    }
+}
+
+/**
+ * Event handler to shift elements right inside container next to current element.
+ *
+ * If there is no more elements at right, then go from the beginning.
+ *
+ * @param {Object} event DOM event.
+ *
+ * @returns {void}
+ */
+export function switch_right(event) {
+    const current = event.target.previousElementSibling;
+    const children_len = current.children.length;
+
+    for (let idx = 0; idx < children_len; idx++) {
+        const element = current.children[idx];
+
+        if (element.style.display !== 'none') {
+            const element_display = element.style.display;
+
+            if (element.nextElementSibling) {
+                element.style.display = 'none';
+                element.nextElementSibling.style.display = element_display;
+            }
+            else {
+                element.style.display = 'none';
+                current.children[0].style.display = element_display;
+            }
+
+            return;
+        }
+    }
+}
+
+/**
+ * Initializes Kana tables UI.
+ * @param {Object} kana Object that holds UI elements of Kana selection.
+ * @returns {void}
+ */
+export function init_kana_tables(kana) {
+    const keys = Object.keys(kana);
+    const keys_len = keys.length;
+
+    for (let idx = 0; idx < keys_len; idx++) {
+        const element = kana[keys[idx]];
+
+        element.tables.double.style.display = 'none';
+
+        element.tables.simple.addEventListener('click', table_click);
+        element.tables.double.addEventListener('click', table_click);
+
+        element.left.addEventListener('click', switch_left);
+        element.right.addEventListener('click', switch_right);
+    }
 }

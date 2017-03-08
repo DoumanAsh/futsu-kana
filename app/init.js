@@ -14,13 +14,31 @@ window.addEventListener("load", function() {
         input: question_section.children[2]
     };
 
-    const kana = {
-        hiragana: document.getElementById("Hiragana").children[1],
-        katakana: document.getElementById("Katakana").children[1]
+    const tabs = {
+        hiragana: document.getElementById("Hiragana"),
+        katakana: document.getElementById("Katakana"),
     };
 
-    kana.hiragana.addEventListener('click', ui.table_click);
-    kana.katakana.addEventListener('click', ui.table_click);
+    const kana = {
+        hiragana: {
+            tables: {
+                simple: tabs.hiragana.children[1].children[1].children[0],
+                double: tabs.hiragana.children[1].children[1].children[1]
+            },
+            left: tabs.hiragana.children[1].children[0],
+            right: tabs.hiragana.children[1].children[2],
+        },
+        katakana: {
+            tables: {
+                simple: tabs.katakana.children[1].children[1].children[0],
+                double: tabs.katakana.children[1].children[1].children[1]
+            },
+            left: tabs.katakana.children[1].children[0],
+            right: tabs.katakana.children[1].children[2],
+        }
+    };
+
+    ui.init_kana_tables(kana);
 
     const on_hash_change = ui.hash_change(site_nav);
     const on_hash_start_page = ui.init_start(question, kana);
