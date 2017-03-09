@@ -79,6 +79,18 @@ include _head.jade
         pya: [kana('ピャ', 'pya'), kana('ピュ', 'pyu'), kana('ピョ', 'pyo'), kana(), kana()],
     };
 
+    var katakana_extra = {
+        wi: [kana(), kana('ウィ', 'wi'), kana(), kana('ウェ', 'we'), kana('ウォ', 'wo')],
+        va: [kana('ヴァ', 'va'), kana('ヴィ', 'vi'), kana('ヴ', 'vu'), kana('ヴェ', 've'), kana('ヴォ', 'vo')],
+        she: [kana(), kana(), kana(), kana('シェ', 'she'), kana()],
+        je: [kana(), kana(), kana(), kana('ジェ', 'je'), kana()],
+        che: [kana(), kana(), kana(), kana('チェ', 'che'), kana()],
+        to: [kana(), kana('ティ', 'ti'), kana('トゥ', 'tu'), kana(), kana()],
+        du: [kana(), kana('ディ', 'di'), kana('ドゥ', 'du'), kana(), kana()],
+        tsa: [kana('ツァ', 'tsa'), kana('ツィ', 'tsi'), kana('', ''), kana('ツェ', 'tse'), kana('ツォ', 'tso')],
+        fa: [kana('ファ', 'fa'), kana('フィ', 'fi'), kana('', ''), kana('フェ', 'fe'), kana('フォ', 'fo')],
+    };
+
 mixin nav_a(name)
     a(href="#" + name)=name
 
@@ -135,6 +147,12 @@ body
 
                 section(class="table")
                     each kanas, col in katakana_double
+                        div(class="column")
+                            +checkbox(col)
+                            each kana in kanas
+                                div(title=kana.romaji)=kana.kana
+                section(class="table")
+                    each kanas, col in katakana_extra
                         div(class="column")
                             +checkbox(col)
                             each kana in kanas

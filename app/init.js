@@ -33,7 +33,8 @@ window.addEventListener("load", function() {
         katakana: {
             tables: {
                 simple: tabs.katakana.children[1].children[1].children[0],
-                double: tabs.katakana.children[1].children[1].children[1]
+                double: tabs.katakana.children[1].children[1].children[1],
+                extra: tabs.katakana.children[1].children[1].children[2]
             },
             left: tabs.katakana.children[1].children[0],
             right: tabs.katakana.children[1].children[2],

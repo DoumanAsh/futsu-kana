@@ -58,6 +58,11 @@ export function init_start(question, kana) {
             add_column_if(double_katakana_columns[idx]);
         }
 
+        const extra_katakana_columns = kana.katakana.tables.extra.children;
+        for (let idx = 0; idx < extra_katakana_columns.length; idx += 1) {
+            add_column_if(extra_katakana_columns[idx]);
+        }
+
         question_kanas_back = question_kanas.slice(0);
     };
 
@@ -317,6 +322,10 @@ export function init_kana_tables(kana) {
         const element = kana[keys[idx]];
 
         element.tables.double.style.display = 'none';
+        if ('extra' in element.tables) {
+            element.tables.extra.style.display = 'none';
+            element.tables.extra.addEventListener('click', table_click);
+        }
 
         element.tables.simple.addEventListener('click', table_click);
         element.tables.double.addEventListener('click', table_click);
