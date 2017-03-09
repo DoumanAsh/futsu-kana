@@ -27,6 +27,8 @@ window.addEventListener("load", function() {
             },
             left: tabs.hiragana.children[1].children[0],
             right: tabs.hiragana.children[1].children[2],
+            select_all: tabs.hiragana.children[2].children[0],
+            reset_all: tabs.hiragana.children[2].children[1],
         },
         katakana: {
             tables: {
@@ -35,6 +37,8 @@ window.addEventListener("load", function() {
             },
             left: tabs.katakana.children[1].children[0],
             right: tabs.katakana.children[1].children[2],
+            select_all: tabs.katakana.children[2].children[0],
+            reset_all: tabs.katakana.children[2].children[1],
         }
     };
 

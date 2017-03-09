@@ -201,7 +201,7 @@ export function hash_change(site_nav) {
  * @param {Object} event Browser event.
  * @returns {void}
  */
-export function table_click(event) {
+function table_click(event) {
     if (/input/i.test(event.target.tagName)) return;
     else if (/table/.test(event.target.className)) return;
 
@@ -220,7 +220,7 @@ export function table_click(event) {
  *
  * @returns {void}
  */
-export function switch_left(event) {
+function switch_left(event) {
     const current = event.target.nextElementSibling;
     const children_len = current.children.length;
 
@@ -253,7 +253,7 @@ export function switch_left(event) {
  *
  * @returns {void}
  */
-export function switch_right(event) {
+function switch_right(event) {
     const current = event.target.previousElementSibling;
     const children_len = current.children.length;
 
@@ -278,6 +278,33 @@ export function switch_right(event) {
 }
 
 /**
+ * Modify checked attribute of all checkboxes in current Kana table.
+ * @param {Object} tables Container with Kana tables.
+ * @param {Boolean} value Boolean to set checked attribute with.
+ * @returns {void}
+ */
+function apply_to_table(tables, value) {
+    const tables_keys = Object.keys(tables);
+    const tables_len = tables_keys.length;
+    return function() {
+        for (let idx = 0; idx < tables_len; idx++) {
+            const table = tables[tables_keys[idx]];
+
+            if (table.style.display !== 'none') {
+                const columns = table.children;
+                const columns_len = columns.length;
+
+                for (let column_idx = 0; column_idx < columns_len; column_idx += 1) {
+                    columns[column_idx].children[0].children[0].checked = value;
+                }
+
+                break;
+            }
+        }
+    };
+}
+
+/**
  * Initializes Kana tables UI.
  * @param {Object} kana Object that holds UI elements of Kana selection.
  * @returns {void}
@@ -296,5 +323,8 @@ export function init_kana_tables(kana) {
 
         element.left.addEventListener('click', switch_left);
         element.right.addEventListener('click', switch_right);
+
+        element.select_all.addEventListener('click', apply_to_table(element.tables, true));
+        element.reset_all.addEventListener('click', apply_to_table(element.tables, false));
     }
 }
