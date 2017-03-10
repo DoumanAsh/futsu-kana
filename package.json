@@ -13,7 +13,8 @@
     "scripts": {
         "start": "brunch watch --server",
         "build": "brunch build --production",
-        "lint": "eslint app/ --ignore-pattern public"
+        "lint": "eslint app/ test/",
+        "test": "node --harmony ./node_modules/ava/cli.js --verbose"
     },
 
     "dependencies": {
@@ -23,7 +24,7 @@
         "eslint": "*",
 
         "ava": "*",
-        "nyc": "*",
+        "jsdom": "*",
 
         "brunch": "*",
         "auto-reload-brunch": "*",
@@ -46,16 +47,5 @@
             "app/**/*.js"
         ],
         "failFast": true
-    },
-    "nyc": {
-        "all": true,
-        "include": [
-            "app/**/*.js"
-        ],
-        "reporter": [
-            "html",
-            "text",
-            "lcov"
-        ]
     }
 }
