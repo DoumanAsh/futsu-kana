@@ -119,7 +119,7 @@ body
                         div(class="column")
                             +checkbox(col)
                             each kana in kanas
-                                div(title=kana.romaji)=kana.kana
+                                div(title=kana.romaji) #{kana.kana}
 
                 section(class="table")
                     each kanas, col in hiragana_double
